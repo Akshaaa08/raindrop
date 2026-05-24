@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: raindrop-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false          # set manually in Render dashboard
+      - key: JWT_SECRET
+        sync: false          # set manually in Render dashboard
+      - key: CLIENT_URL
+        sync: false          # set to your Vercel frontend URL
+      - key: SECURITY_DEPOSIT
+        value: "150"
+      - key: HOURLY_RATE
+        value: "10"

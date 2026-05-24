@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+// In development: VITE_API_URL is not set, so falls back to '/api'
+// which hits the Vite dev proxy → localhost:5000
+// In production: VITE_API_URL = 'https://your-backend.onrender.com/api'
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: import.meta.env.VITE_API_URL || '/api',
 });
 
 // Attach JWT token from localStorage to every request
